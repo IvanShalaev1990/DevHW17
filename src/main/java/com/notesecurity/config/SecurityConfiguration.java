@@ -32,6 +32,7 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth ->
                         auth
+                                .requestMatchers("/h2-console/**").permitAll()
                                 .requestMatchers("/login").permitAll()
                                 .requestMatchers("/user/**").hasAnyAuthority("USER", "ADMIN")
                                 .requestMatchers("/admin/**").hasAuthority("ADMIN"))
